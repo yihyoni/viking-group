@@ -1,0 +1,25 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+  }
+  
+  a,
+  a:link,
+  a:visited {
+    color: inherit;
+  }
+  
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  img {
+    display: block;
+  }
