@@ -139,6 +139,7 @@
   border-bottom: 1px solid $color-text-muted;
   box-sizing: border-box;
 
+  // menu-header 바로 아래 span만
   > span:first-of-type {
     font-family: $font-sans;
     font-weight: 600;
@@ -198,14 +199,14 @@
     text-align: center;
   }
 
-  &:last-child .menu-list {
-    align-items: flex-start;
-    text-align: left;
+  // &:last-child .menu-list {
+  //   align-items: flex-start;
+  //   text-align: left;
 
-    a {
-      width: 100%;
-    }
-  }
+  //   a {
+  //     width: 100%;
+  //   }
+  // }
 }
 
 .menu-title-divider {

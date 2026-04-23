@@ -220,13 +220,6 @@ img {
   color: #090e21;
   text-align: center;
 }
-.menu-column:last-child .menu-list {
-  align-items: flex-start;
-  text-align: left;
-}
-.menu-column:last-child .menu-list a {
-  width: 100%;
-}
 
 .menu-title-divider {
   width: 38px;
@@ -389,7 +382,7 @@ img {
   height: 37px;
 }
 
-.btn_next {
+.btn-next {
   transform: scaleX(-1);
 }
 
