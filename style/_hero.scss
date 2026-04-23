@@ -38,19 +38,21 @@
   height: auto;
 }
 
-.CategoryList {
+.category-list {
   display: flex;
   align-items: center;
   gap: 48px;
 }
 
-.CategoryMenu a {
-  font-family: $font-sans;
-  font-weight: 600;
-  font-size: 20px;
-  letter-spacing: -0.05em;
-  color: $color-white;
-  white-space: nowrap;
+.category-menu {
+  a {
+    font-family: $font-sans;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.05em;
+    color: $color-white;
+    white-space: nowrap;
+  }
 }
 
 .menu-logo {
@@ -103,7 +105,7 @@
   height: 15px;
 }
 
-.menu-overlay {
+.menu-container {
   position: absolute;
   z-index: 2;
   left: 0;
@@ -113,6 +115,18 @@
   flex-direction: column;
   height: 563px;
   background: $color-white;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+}
+
+.menu-container.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .menu-header {

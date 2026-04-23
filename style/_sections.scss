@@ -99,8 +99,8 @@
   max-width: $max-content;
 }
 
-.btn_prev,
-.btn_next {
+.btn-prev,
+.btn-next {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +115,7 @@
   }
 }
 
-.btn_next {
+.btn-next {
   transform: scaleX(-1);
 }
 
@@ -132,6 +132,7 @@
   overflow: hidden;
   pointer-events: none;
 
+  //  이 부분 일반 이미지로 대체. 굳이 top, width 로 안쓸예정 -4/22
   img {
     position: absolute;
     left: 0;
@@ -160,7 +161,7 @@
   opacity: 1;
 }
 
-.store_desc {
+.store-desc {
   max-width: 720px;
   font-family: $font-sans;
   font-weight: 500;
@@ -205,10 +206,10 @@
   border: 1px solid $color-border;
   border-bottom: 0;
   overflow: hidden;
-  box-sizing: border-box;
+  // box-sizing: border-box;
 }
 
-.img_thumb {
+.img-thumb {
   width: 100%;
   height: 100%;
 
