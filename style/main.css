@@ -41,7 +41,8 @@ img {
 }
 
 .hero-bg {
-  height: 100vh;
+  position: absolute;
+  width: 100%;
 }
 .hero-bg img {
   width: 100%;
@@ -56,6 +57,7 @@ img {
   display: flex;
   position: absolute;
   flex-direction: column;
+  z-index: 1;
 }
 
 .header {

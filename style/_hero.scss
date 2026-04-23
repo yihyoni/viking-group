@@ -9,10 +9,11 @@
 }
 
 .hero-bg {
-  // position: absolute;
+  position: absolute;
   // inset: 0;
   // z-index: 0;
-  height: 100vh;
+  // height: 100vh;
+  width: 100%;
 
   img {
     width: 100%;
@@ -27,6 +28,7 @@
   display: flex;
   position: absolute;
   flex-direction: column;
+  z-index: 1;
 }
 .header {
   // position: absolute;
