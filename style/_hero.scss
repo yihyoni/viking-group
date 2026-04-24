@@ -3,26 +3,23 @@
 .section-hero {
   width: 100%;
   position: relative;
-  // height: 802px; // 수정) 이거 모바일일 때 100vh 여야 하고 데스크톱일 땐 802px 여야 함
-
-  height: clamp(802px, 60vh, 100vh);
-
+  height: 802px; // 데스크톱(1440px 이상) 기준 고정 높이
   overflow: hidden;
   background: $color-bg-dark;
 }
 
 .hero-bg {
   position: absolute;
-  // inset: 0;
-  // z-index: 0;
-  // height: 100vh;
   width: 100%;
-  height: clamp(802px, 60vh, 100vh);
+  height: 100%; // 부모 영역 높이를 따라감
+  top: 0;
+  left: 0;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center; // 사진 위쪽(구름)이 잘리지 않고 위에서부터 시작하도록 수정
   }
 }
 
@@ -87,16 +84,12 @@
 
 .hero-content-wrap {
   position: relative;
-  // z-index: 1;
-  // left: 50%;
-  // top: 91px;
-  // transform: translateX(-50%);
   display: flex;
   align-items: center;
   width: 100%;
-  // max-width: $max-content;
   height: 100%;
-  padding: 0 164px;
+  // 1440px 이상: 164px, 768px 이하: 32px, 그 사이: 서서히 변함
+  padding: 0 clamp(32px, -118.8px + 19.6vw, 164px);
   box-sizing: border-box;
 }
 
@@ -104,9 +97,12 @@
   // max-width: 411px;
   font-family: $font-sans;
   font-weight: 500;
-  font-size: 32px;
-  line-height: 50px;
   color: $color-white;
+
+  // 1440px 이상: 32px, 768px 이하: 20px, 그 사이: 서서히 변함
+  font-size: clamp(20px, 6.286px + 1.785vw, 32px);
+  // 1440px 이상: 50px, 768px 이하: 30px, 그 사이: 서서히 변함
+  line-height: clamp(30px, 7.143px + 2.976vw, 50px);
 
   strong {
     font-weight: 700;
@@ -114,10 +110,23 @@
 }
 
 .sliders {
-  display: block;
-  margin-top: 20px;
-  width: 93px;
-  height: 15px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px; // 텍스트와의 간격
+
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &.active {
+      background: #ffffff;
+    }
+  }
 }
 
 .menu-container {
@@ -214,15 +223,6 @@
     color: $color-bg-dark;
     text-align: center;
   }
-
-  // &:last-child .menu-list {
-  //   align-items: flex-start;
-  //   text-align: left;
-
-  //   a {
-  //     width: 100%;
-  //   }
-  // }
 }
 
 .menu-title-divider {
@@ -272,11 +272,26 @@
   }
 }
 
+// 미디어쿼리
 @media (max-width: 1440px) {
   .category-menu {
     display: none;
   }
 }
 
+// 1440px 미만일 때 vw로 서서히 줄어들게 설정
+@media (max-width: 1439px) {
+  .section-hero {
+    height: 55.69vw; // 가로 너비에 비례해서 서서히 줄어듦 (802 / 1440 = 55.69%)
+    min-height: 100vh; // 브라우저 세로 길이보다는 작아지지 않게 방어
+    min-height: 100dvh; // (모바일 주소창 이슈 방지)
+  }
+}
+
+// 완전 모바일 화면
 @media (max-width: 768px) {
+  .section-hero {
+    height: 100vh;
+    height: 100dvh;
+  }
 }
