@@ -175,7 +175,7 @@
 .section-event-news {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   gap: 46px;
   padding: 60px 24px 80px;
   background: $color-white;

@@ -475,7 +475,7 @@ img {
 .section-event-news {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   gap: 46px;
   padding: 60px 24px 80px;
   background: #ffffff;
@@ -548,7 +548,6 @@ img {
 }
 
 .footer {
-  max-width: 1440px;
   margin: 0 auto;
   background: #090e21;
   color: #f5f5f0;
