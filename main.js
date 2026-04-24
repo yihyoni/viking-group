@@ -2,9 +2,9 @@ const menuContainer = document.querySelector(".menu-container");
 const openBtn = document.querySelector(".menu-logo");
 const closeBtn = document.querySelector(".close-button");
 
-// 열기
+// 토글
 openBtn.addEventListener("click", () => {
-  menuContainer.classList.add("is-open");
+  menuContainer.classList.toggle("is-open");
 });
 
 // 닫기

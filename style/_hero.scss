@@ -3,7 +3,10 @@
 .section-hero {
   width: 100%;
   position: relative;
-  height: 802px; // 수정) 이거 모바일일 때 100vh 여야 하고 데스크톱일 땐 802px 여야 함
+  // height: 802px; // 수정) 이거 모바일일 때 100vh 여야 하고 데스크톱일 땐 802px 여야 함
+
+  height: clamp(802px, 60vh, 100vh);
+
   overflow: hidden;
   background: $color-bg-dark;
 }
@@ -14,6 +17,7 @@
   // z-index: 0;
   // height: 100vh;
   width: 100%;
+  height: clamp(802px, 60vh, 100vh);
 
   img {
     width: 100%;
@@ -82,7 +86,7 @@
 }
 
 .hero-content-wrap {
-  // position: absolute;
+  position: relative;
   // z-index: 1;
   // left: 50%;
   // top: 91px;
@@ -121,7 +125,7 @@
   z-index: 2;
   left: 0;
   right: 0;
-  top: 91px;
+  top: 0;
   display: flex;
   flex-direction: column;
   height: 563px;
@@ -266,4 +270,13 @@
     max-height: 420px;
     object-fit: contain;
   }
+}
+
+@media (max-width: 1440px) {
+  .category-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
 }
