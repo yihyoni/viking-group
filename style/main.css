@@ -309,7 +309,6 @@ img {
 }
 
 .box-text {
-  max-width: 520px;
   font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 32px;
@@ -395,7 +394,7 @@ img {
   justify-content: center;
   gap: 40px;
   width: 100%;
-  max-width: 1440px;
+  min-width: 393px;
 }
 
 .btn-prev,
@@ -422,6 +421,8 @@ img {
   display: flex;
   align-items: center;
   gap: 76px;
+  overflow: hidden;
+  justify-content: center;
 }
 
 .store-img0,
@@ -473,17 +474,16 @@ img {
 }
 
 .section-event-news {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 46px;
-  padding: 60px 24px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(272px, 422px));
+  justify-content: center;
+  gap: clamp(24px, 3.2vw, 46px);
+  padding: 60px 56px;
   background: #ffffff;
 }
 
 .event-news {
-  width: 100%;
-  max-width: 422px;
+  width: 422px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -496,7 +496,7 @@ img {
   font-weight: 700;
   font-size: 24px;
   letter-spacing: -0.01em;
-  text-align: center;
+  text-align: left;
   color: #000000;
 }
 
@@ -506,6 +506,7 @@ img {
   border: 1px solid #e8e8e8;
   border-bottom: 0;
   overflow: hidden;
+  aspect-ratio: 422/295;
 }
 
 .img-thumb {
@@ -547,6 +548,55 @@ img {
   color: #000000;
 }
 
+@media (max-width: 768px) {
+  .section-dining-distribution {
+    flex-direction: column;
+    gap: 36px;
+    padding: 40px 24px;
+  }
+  .box-text {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+  .box-content {
+    position: relative;
+    width: 358px;
+    height: 249px;
+  }
+  .distribution-content,
+  .dining-content {
+    width: 170px;
+  }
+  .distribution-content {
+    left: 0;
+    top: 0;
+  }
+  .dining-content {
+    left: 188px;
+    top: 38px;
+  }
+  .distribution-img,
+  .dining-img {
+    width: 170px;
+    height: 170px;
+  }
+  .distribution-txt p:first-of-type,
+  .dining-txt p:first-of-type {
+    font-size: 16px;
+    letter-spacing: -0.063em;
+  }
+  .distribution-txt p:last-of-type,
+  .dining-txt p:last-of-type {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .section-event-news {
+    padding: 40px 24px;
+    grid-template-columns: minmax(272px, 1fr);
+  }
+}
 .footer {
   margin: 0 auto;
   background: #090e21;
