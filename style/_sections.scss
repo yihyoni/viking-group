@@ -95,8 +95,6 @@
   justify-content: center;
   gap: 40px;
   width: 100%;
-  // max-width: $max-content;
-  min-width: 393px;
 }
 
 .btn-prev,
@@ -206,7 +204,6 @@
   border: 1px solid $color-border;
   border-bottom: 0;
   overflow: hidden;
-  // box-sizing: border-box;
   aspect-ratio: 422 / 295;
 }
 
@@ -251,7 +248,7 @@
   }
 }
 
-// 미디어쿼리: section-dining-distribution ────────────────────────────────────
+// 미디어쿼리 ────────────────────────────────────
 @media (max-width: 768px) {
   .section-dining-distribution {
     flex-direction: column;
@@ -312,8 +309,3 @@
     grid-template-columns: minmax(272px, 1fr);
   }
 }
-// @media (max-width: 928px) {
-//   .event-news {
-//     width: 272px;
-//   }
-// }

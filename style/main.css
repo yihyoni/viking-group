@@ -394,7 +394,6 @@ img {
   justify-content: center;
   gap: 40px;
   width: 100%;
-  min-width: 393px;
 }
 
 .btn-prev,
