@@ -74,7 +74,6 @@ img {
 }
 
 .logo {
-  display: block;
   width: 148px;
   height: auto;
 }
@@ -133,7 +132,7 @@ img {
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 .sliders .dot {
   width: 15px;
@@ -296,6 +295,25 @@ img {
   .section-hero {
     height: 100vh;
     height: 100dvh;
+  }
+  .logo img {
+    width: 76px;
+    height: auto;
+  }
+  .menu-logo img {
+    width: 22px;
+    height: 16px;
+  }
+  .header {
+    padding: 24px;
+  }
+  .sliders {
+    gap: 11px;
+    margin: 8px 0;
+  }
+  .sliders .dot {
+    width: 6px;
+    height: 6px;
   }
 }
 .section-dining-distribution {
