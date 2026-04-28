@@ -332,11 +332,6 @@ img {
   width: 290px;
 }
 
-.distribution-content {
-  left: 0;
-  top: 0;
-}
-
 .dining-content {
   left: 330px;
   top: 58px;
@@ -419,9 +414,9 @@ img {
 .list_store {
   display: flex;
   align-items: center;
-  gap: 76px;
   overflow: hidden;
-  justify-content: center;
+  justify-content: space-between;
+  width: 1186px;
 }
 
 .store-img0,
@@ -432,8 +427,8 @@ img {
 }
 
 .store-img1 img {
-  width: 394px;
-  height: 394px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
@@ -441,8 +436,8 @@ img {
 
 .store-img0 img,
 .store-img2 img {
-  width: 320px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
@@ -481,14 +476,11 @@ img {
   justify-content: center;
   justify-items: center;
   gap: clamp(24px, 3.2vw, 46px);
-  padding: 60px 56px;
+  padding: 60px 0;
 }
 
 .event-news {
   width: 422px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .txt-label {
@@ -571,10 +563,6 @@ img {
   .dining-content {
     width: 170px;
   }
-  .distribution-content {
-    left: 0;
-    top: 0;
-  }
   .dining-content {
     left: 188px;
     top: 38px;
@@ -602,11 +590,54 @@ img {
     width: 240px;
     height: 240px;
   }
+  .section-store {
+    padding: 30px 0;
+  }
+  .store-desc {
+    font-size: 14px;
+  }
+  .btn-prev img,
+  .btn-next img {
+    width: 12.42px;
+    height: 24.83px;
+  }
+  .section-store .crab52-logo {
+    height: 24px;
+    width: auto;
+  }
 }
 @media (max-width: 1440px) {
   .store-img0,
   .store-img2 {
     display: none;
+  }
+  .list_store {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
+    width: auto;
+  }
+}
+@media (max-width: 405px) {
+  .section-event-news {
+    padding: 24px 0;
+  }
+  .event-news {
+    width: 272px;
+  }
+  .distribution-img,
+  .dining-img {
+    width: 43.26vw;
+    height: 43.26vw;
+  }
+  .dining-content {
+    left: 47.84vw;
+    top: 9.67vw;
+  }
+  .box-content {
+    width: 91.09vw;
+    height: 249px;
   }
 }
 .footer {
