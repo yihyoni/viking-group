@@ -320,7 +320,7 @@ img {
 .box-content {
   position: relative;
   width: 620px;
-  height: 374px;
+  height: 406px;
 }
 
 .distribution-content,
@@ -624,8 +624,8 @@ img {
 
 .footer-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
+  width: 404px;
+  justify-content: space-between;
   font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -637,7 +637,7 @@ img {
 .footer-link {
   display: flex;
   align-items: center;
-  gap: 21px;
+  gap: 5.34vw;
 }
 .footer-link img {
   display: block;
@@ -646,6 +646,17 @@ img {
 }
 .footer-link .wharf-logo {
   height: 16px;
+}
+
+.footer-link-mobile {
+  display: flex;
+  align-items: center;
+  gap: 4.58vw;
+}
+.footer-link-mobile img {
+  display: block;
+  height: 16px;
+  width: auto;
 }
 
 .footer-bottom {
@@ -686,17 +697,87 @@ img {
   font-size: 12px;
   line-height: 1.5;
   color: #f5f5f0;
+  flex: 1;
 }
 .footer-info p:last-child {
   color: #dbdbda;
 }
 
 .footer-logo {
-  flex: 1 1 160px;
+  flex: 1;
   display: flex;
   justify-content: flex-end;
 }
 .footer-logo img {
   width: 169px;
   height: auto;
+}
+
+@media (max-width: 987px) {
+  .footer-link {
+    display: none;
+  }
+  .footer-legal a:nth-of-type(2) {
+    display: none;
+  }
+  .footer-link-mobile img {
+    display: block;
+    height: 14px;
+    width: auto;
+  }
+  .footer-legal a {
+    font-size: 12px;
+  }
+  .footer-logo img {
+    width: 120px;
+    height: auto;
+    padding-top: 24px;
+    padding-bottom: 32px;
+  }
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-info {
+    text-align: center;
+  }
+  .footer-bottom {
+    padding: 0;
+  }
+  .footer-legal {
+    display: flex;
+    justify-content: center;
+    color: #f5f5f0;
+    margin: 24px;
+    gap: 4.58vw;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (min-width: 988px) {
+  .footer-link-mobile {
+    display: none;
+  }
+}
+@media (max-width: 457px) {
+  .footer-legal {
+    display: flex;
+    justify-content: space-between;
+    color: #f5f5f0;
+    gap: 0;
+    margin: 24px;
+  }
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+  }
+  .footer-top {
+    padding: 0;
+  }
 }/*# sourceMappingURL=main.css.map */
