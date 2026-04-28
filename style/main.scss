@@ -3,3 +3,16 @@
 @use "hero";
 @use "sections";
 @use "footer";
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.section-container {
+  width: 100%;
+}
+.footer {
+  flex: 1;
+  width: 100%;
+}

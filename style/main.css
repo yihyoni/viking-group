@@ -834,4 +834,18 @@ img {
   .footer-top {
     padding: 0;
   }
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-container {
+  width: 100%;
+}
+
+.footer {
+  flex: 1;
+  width: 100%;
 }/*# sourceMappingURL=main.css.map */
