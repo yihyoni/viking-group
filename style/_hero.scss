@@ -138,7 +138,6 @@
   flex-direction: column;
   height: 563px;
   background: $color-white;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -158,10 +157,8 @@
   align-items: center;
   justify-content: flex-end;
   gap: 28px;
-  height: 84px;
   padding: 20px 24px;
   border-bottom: 1px solid $color-text-muted;
-  box-sizing: border-box;
 
   // menu-header 바로 아래 span만
   > span:first-of-type {
@@ -269,12 +266,106 @@
     max-height: 420px;
     object-fit: contain;
   }
+
+  span.icon {
+    display: flex;
+  }
+
+  img.icon-plus {
+    width: 29px;
+  }
 }
 
-// 미디어쿼리
+.menu-container-mobile {
+  position: fixed;
+  z-index: 999;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+
+  .menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 24px;
+    border-bottom: 1px solid #dbdbda;
+  }
+
+  .menu-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 36px;
+    width: 100%;
+    border-bottom: 1px solid $color-text-muted;
+  }
+
+  // 여기 수정해야함.
+  .menu-title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      font-family: $font-sans;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -1px;
+      color: #090e21;
+      line-height: normal;
+    }
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  .menu-list {
+    display: flex;
+    // 메뉴 열게하려면 display: flex; 부여
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    font-size: 20px;
+    letter-spacing: -1px;
+    color: #090e21;
+  }
+
+  .menu-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+  }
+}
+// body.menu-open {
+//   overflow: hidden;
+// }
+
+// // 메뉴 열 때
+// document.body.classList.add("menu-open");
+
+// // 메뉴 닫을 때
+// document.body.classList.remove("menu-open");
+
+// 미디어쿼리 ────────────────────────────────────
 @media (max-width: 1440px) {
   .category-menu {
     display: none;
+  }
+  .menu-container {
+    display: none;
+  }
+  .menu-container-mobile {
+    display: block;
   }
 }
 

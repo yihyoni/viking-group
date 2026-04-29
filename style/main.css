@@ -173,10 +173,8 @@ img {
   align-items: center;
   justify-content: flex-end;
   gap: 28px;
-  height: 84px;
   padding: 20px 24px;
   border-bottom: 1px solid #dbdbda;
-  box-sizing: border-box;
 }
 .menu-header > span:first-of-type {
   font-family: "Pretendard", system-ui, -apple-system, sans-serif;
@@ -278,10 +276,86 @@ img {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.menu-separator span.icon {
+  display: flex;
+}
+.menu-separator img.icon-plus {
+  width: 29px;
+}
+
+.menu-container-mobile {
+  position: fixed;
+  z-index: 999;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+}
+.menu-container-mobile .menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #dbdbda;
+}
+.menu-container-mobile .menu-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 36px;
+  width: 100%;
+  border-bottom: 1px solid #dbdbda;
+}
+.menu-container-mobile .menu-title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-container-mobile .menu-title p {
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -1px;
+  color: #090e21;
+  line-height: normal;
+}
+.menu-container-mobile .menu-title .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-container-mobile .menu-title .icon img {
+  width: 18px;
+  height: 18px;
+}
+.menu-container-mobile .menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  font-size: 20px;
+  letter-spacing: -1px;
+  color: #090e21;
+}
+.menu-container-mobile .menu-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+}
 
 @media (max-width: 1440px) {
   .category-menu {
     display: none;
+  }
+  .menu-container {
+    display: none;
+  }
+  .menu-container-mobile {
+    display: block;
   }
 }
 @media (max-width: 1439px) {
