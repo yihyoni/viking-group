@@ -259,30 +259,22 @@
   width: 1px;
   min-height: 100%;
   padding: 0 8px;
-
-  img {
-    height: 100%;
-    width: auto;
-    max-height: 420px;
-    object-fit: contain;
-  }
-
-  span.icon {
-    display: flex;
-  }
-
-  img.icon-plus {
-    width: 29px;
-  }
 }
 
 .menu-container-mobile {
+  display: none;
   position: fixed;
   z-index: 999;
   background-color: #ffffff;
   width: 100vw;
   height: 100vh;
   overflow-y: hidden;
+
+  // 열렸을 때
+  &.is-open {
+    display: flex;
+    flex-direction: column;
+  }
 
   .menu-header {
     display: flex;
@@ -317,20 +309,28 @@
       color: #090e21;
       line-height: normal;
     }
-    .icon {
+    .toggle-btn {
+      all: unset;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+
       img {
         width: 18px;
         height: 18px;
+      }
+
+      .icon-minus {
+        display: none;
       }
     }
   }
 
   .menu-list {
-    display: flex;
-    // 메뉴 열게하려면 display: flex; 부여
+    // display: flex;
+    // // 메뉴 열게하려면 display: flex; 부여
+    display: none; // 기본적으로 숨김
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
@@ -344,28 +344,23 @@
     align-items: center;
     flex-direction: column;
     padding: 0;
+    justify-content: flex-start;
   }
 }
-// body.menu-open {
-//   overflow: hidden;
-// }
 
-// // 메뉴 열 때
-// document.body.classList.add("menu-open");
+// 추후 영어 번역 기능을 위해 클릭가능하도록 설정
+.menu-header span:first-of-type {
+  cursor: pointer;
+}
 
-// // 메뉴 닫을 때
-// document.body.classList.remove("menu-open");
+body.no-scroll {
+  overflow: hidden;
+}
 
 // 미디어쿼리 ────────────────────────────────────
 @media (max-width: 1440px) {
   .category-menu {
     display: none;
-  }
-  .menu-container {
-    display: none;
-  }
-  .menu-container-mobile {
-    display: block;
   }
 }
 
@@ -407,5 +402,9 @@
       width: 10px;
       height: 10px;
     }
+  }
+
+  .menu-container {
+    display: none; // 데스크톱 메뉴 완전히 숨김
   }
 }

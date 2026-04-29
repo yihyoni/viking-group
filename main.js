@@ -1,14 +1,64 @@
 const menuContainer = document.querySelector(".menu-container");
+const menuContainerMobile = document.querySelector(".menu-container-mobile");
 const openBtn = document.querySelector(".menu-logo");
-const closeBtn = document.querySelector(".close-button");
+const closeBtnDesktop = document.querySelector(".menu-container .close-button");
+const closeBtnMobile = document.querySelector(
+  ".menu-container-mobile .close-button",
+);
 
-// 토글
+// 메뉴버튼 클릭하면 메뉴 열기 (화면 크기에 따라 다른 메뉴 열림)
+//미디어쿼리 768px 기준
+
 openBtn.addEventListener("click", () => {
-  menuContainer.classList.toggle("is-open");
+  if (window.innerWidth <= 768) {
+    // 모바일 메뉴 열기
+    menuContainerMobile.classList.toggle("is-open");
+    document.body.classList.add(
+      "no-scroll",
+      menuContainerMobile.classList.contains("is-open"),
+    );
+  } else {
+    // 데스크톱 메뉴 열기
+    menuContainer.classList.toggle("is-open");
+  }
 });
 
-// 닫기
-closeBtn.addEventListener("click", () => {
+// 데스크톱 메뉴 닫기
+closeBtnDesktop.addEventListener("click", () => {
   menuContainer.classList.remove("is-open");
 });
 
+// 모바일 메뉴 닫기
+closeBtnMobile.addEventListener("click", () => {
+  menuContainerMobile.classList.remove("is-open");
+  document.body.classList.remove("no-scroll");
+});
+
+// 모바일 메뉴 내부 토글 버튼 (+/- 버튼)
+const toggleBtns = document.querySelectorAll(
+  ".menu-container-mobile .toggle-btn",
+);
+
+toggleBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const menuColumn = btn.closest(".menu-column");
+    const menuList = menuColumn.querySelector(".menu-list");
+    const iconPlus = btn.querySelector(".icon-plus");
+    const iconMinus = btn.querySelector(".icon-minus");
+
+    // 메뉴 리스트 토글
+    if (menuList.style.display === "flex") {
+      // 닫기
+      menuList.style.display = "none";
+      iconPlus.style.display = "block";
+      iconMinus.style.display = "none";
+      document.body.classList.remove("no-scroll"); // 스크롤 다시 허용
+    } else {
+      // 열기
+      menuList.style.display = "flex";
+      iconPlus.style.display = "none";
+      iconMinus.style.display = "block";
+      document.body.classList.add("no-scroll"); // 스크롤 막기
+    }
+  });
+});
