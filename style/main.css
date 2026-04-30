@@ -814,7 +814,6 @@ body.no-scroll {
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
   align-items: flex-end;
   justify-content: space-between;
 }
@@ -868,7 +867,6 @@ body.no-scroll {
   .footer-content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
     align-items: center;
     justify-content: center;
   }

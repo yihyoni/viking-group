@@ -7,16 +7,17 @@ const closeBtnMobile = document.querySelector(
 );
 
 // 메뉴버튼 클릭하면 메뉴 열기 (화면 크기에 따라 다른 메뉴 열림)
-//미디어쿼리 768px 기준
+// 미디어쿼리 768px 기준
 
 openBtn.addEventListener("click", () => {
   if (window.innerWidth <= 768) {
     // 모바일 메뉴 열기
     menuContainerMobile.classList.toggle("is-open");
-    document.body.classList.add(
+    // is-open이 true면 메뉴 열림
+    document.body.classList.toggle(
       "no-scroll",
       menuContainerMobile.classList.contains("is-open"),
-    );
+    ); // is-open 여부 판단해서 바디 스크롤 막음
   } else {
     // 데스크톱 메뉴 열기
     menuContainer.classList.toggle("is-open");
@@ -52,13 +53,11 @@ toggleBtns.forEach((btn) => {
       menuList.style.display = "none";
       iconPlus.style.display = "block";
       iconMinus.style.display = "none";
-      document.body.classList.remove("no-scroll"); // 스크롤 다시 허용
     } else {
       // 열기
       menuList.style.display = "flex";
       iconPlus.style.display = "none";
       iconMinus.style.display = "block";
-      document.body.classList.add("no-scroll"); // 스크롤 막기
     }
   });
 });
