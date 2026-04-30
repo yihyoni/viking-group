@@ -6,7 +6,7 @@ const closeBtnMobile = document.querySelector(
   ".menu-container-mobile .close-button",
 );
 
-// 메뉴버튼 클릭하면 메뉴 열기 (화면 크기에 따라 다른 메뉴 열림)
+// 메뉴 버튼 클릭하면 메뉴 열기 (화면 크기에 따라 다른 메뉴 열림)
 // 미디어쿼리 768px 기준
 
 openBtn.addEventListener("click", () => {
@@ -17,7 +17,7 @@ openBtn.addEventListener("click", () => {
     document.body.classList.toggle(
       "no-scroll",
       menuContainerMobile.classList.contains("is-open"),
-    ); // is-open 여부 판단해서 바디 스크롤 막음
+    ); // is-open 여부 판단해서 메뉴 열렸을 때만 바디 스크롤 막음
   } else {
     // 데스크톱 메뉴 열기
     menuContainer.classList.toggle("is-open");
@@ -35,7 +35,7 @@ closeBtnMobile.addEventListener("click", () => {
   document.body.classList.remove("no-scroll");
 });
 
-// 모바일 메뉴 내부 토글 버튼 (+/- 버튼)
+// 모바일 메뉴 내부 토글 (아코디언)
 const toggleBtns = document.querySelectorAll(
   ".menu-container-mobile .toggle-btn",
 );
@@ -47,14 +47,22 @@ toggleBtns.forEach((btn) => {
     const iconPlus = btn.querySelector(".icon-plus");
     const iconMinus = btn.querySelector(".icon-minus");
 
-    // 메뉴 리스트 토글
-    if (menuList.style.display === "flex") {
-      // 닫기
-      menuList.style.display = "none";
-      iconPlus.style.display = "block";
-      iconMinus.style.display = "none";
-    } else {
-      // 열기
+    const isOpen = menuList.style.display === "flex";
+
+    // 모든 메뉴 닫기
+    toggleBtns.forEach((otherBtn) => {
+      const otherColumn = otherBtn.closest(".menu-column");
+      const otherList = otherColumn.querySelector(".menu-list");
+      const otherPlus = otherBtn.querySelector(".icon-plus");
+      const otherMinus = otherBtn.querySelector(".icon-minus");
+
+      otherList.style.display = "none";
+      otherPlus.style.display = "block";
+      otherMinus.style.display = "none";
+    });
+
+    // 내가 누른 메뉴가 닫혀있었으면 열기
+    if (!isOpen) {
       menuList.style.display = "flex";
       iconPlus.style.display = "none";
       iconMinus.style.display = "block";
