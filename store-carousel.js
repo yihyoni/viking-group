@@ -13,6 +13,7 @@ storeStyle.textContent = `
   .list_store {
     position: relative;
     justify-content: center;
+    width: 1186px;
     height: 394px;
   }
 
@@ -47,6 +48,13 @@ storeStyle.textContent = `
   .list_store > div.is-wrapping {
     transition: opacity 0.25s ease;
     opacity: 0;
+  }
+
+  @media (max-width: 1440px) {
+    .list_store {
+      width: 394px;
+      height: 394px;
+    }
   }
 
   @media (max-width: 768px) {
