@@ -7,31 +7,30 @@ const dots = document.querySelectorAll(".dot");
 // ==========================================
 // 1. 앞뒤로 가짜 슬라이드(복제본) 만들기
 // ==========================================
-// 자연스러운 무한 반복을 위해 맨 앞에 '마지막 슬라이드 복사본'을,
-// 맨 뒤에 '첫 번째 슬라이드 복사본'을 몰래 붙여둡니다.
-// [3번 복사] - [1번 진짜] - [2번 진짜] - [3번 진짜] - [1번 복사]
-const firstClone = slides[0].cloneNode(true);
-const lastClone = slides[slides.length - 1].cloneNode(true);
+// 자연스러운 무한 반복을 위해 맨 앞에 '마지막 슬라이드 복사본', 맨 뒤에 '첫 번째 슬라이드 복사본'
+
+const firstClone = slides[0].cloneNode(true); // 첫번째 슬라이드 복사본
+const lastClone = slides[slides.length - 1].cloneNode(true); // 마지막 슬라이드 복사본
 
 heroTrack.appendChild(firstClone); // 맨 뒤에 1번 복사본 추가
 heroTrack.insertBefore(lastClone, slides[0]); // 맨 앞에 3번 복사본 추가
 
-// 가짜 슬라이드까지 포함해서 배열 다시 가져오기 (총 5장이 됨)
+// 가짜 슬라이드까지 포함해서 배열 다시 가져오기
 slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
 
-// 늘어난 슬라이드 개수만큼 트랙의 너비도 늘려주기 (5장 * 100vw = 500vw)
+// 늘어난 슬라이드 개수만큼 트랙의 너비도 늘려줌
 heroTrack.style.width = `${slides.length * 100}vw`;
 
 // ==========================================
 // 2. 변수 설정
 // ==========================================
-// 0번: 3번 복사본, 1번: 1번 진짜, 2번: 2번 진짜, ...
-let currentIndex = 1; // 맨 처음 보여줄 슬라이드는 '1번 진짜' 이므로 인덱스 1부터 시작!
+// [3복사] [1] [2] [3] [1복사]
+let currentIndex = 1; // 맨 처음 보여줄 슬라이드는 3번 복사본이 아닌 슬라이드 이미지 1번이므로 인덱스 1부터 시작
 let isTransitioning = false; // 슬라이드가 넘어가는 도중에 또 넘어가지 않게 막는 자물쇠 역할
 let slideInterval;
 
-// 최초 화면을 '1번 진짜' 위치로 셋팅해둠
-heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`;
+// 최초 화면을 슬라이드 1번 이미지로 세팅
+heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 슬라이드 이미지 1번 보이게 -100vw 로 이동
 
 // ==========================================
 // 3. 슬라이드 이동 함수
