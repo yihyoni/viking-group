@@ -101,5 +101,5 @@ const resetInterval = () => {
   startInterval();
 };
 
-// 처음 페이지 켰을 때 자동 슬라이드 시작!
+// 처음 페이지 켰을 때 자동 슬라이드 시작
 startInterval();
