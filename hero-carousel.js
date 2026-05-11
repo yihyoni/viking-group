@@ -7,10 +7,8 @@ const dots = document.querySelectorAll(".dot");
 // 자연스러운 무한 반복을 위해 맨 앞에 '마지막 슬라이드 복사본', 맨 뒤에 '첫 번째 슬라이드 복사본'
 
 const firstClone = slides[0].cloneNode(true); // 첫번째 슬라이드 복사본
-const lastClone = slides[slides.length - 1].cloneNode(true); // 마지막 슬라이드 복사본
 
 heroTrack.appendChild(firstClone); // 맨 뒤에 1번 복사본 추가
-heroTrack.insertBefore(lastClone, slides[0]); // 맨 앞에 3번 복사본 추가
 
 // 가짜 슬라이드까지 포함해서 배열 다시 가져오기
 slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
@@ -19,13 +17,13 @@ slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
 heroTrack.style.width = `${slides.length * 100}vw`;
 
 // 변수 설정
-// 현재 구조: [3 복사본] - [1] - [2] - [3] - [1 복사본]
-let currentIndex = 1; // 맨 처음 보여줄 슬라이드는 3번 복사본이 아닌 슬라이드 이미지 1번이므로 인덱스 1부터 시작
+// 현재 구조:  [1] - [2] - [3] - [1 복사본]
+let currentIndex = 0; // 맨 처음 보여줄 슬라이드 인덱스
 let isTransitioning = false; // 이미지가 움직이지 않는상태. 클릭 가능 (광클 방지용 변수)
 let slideInterval;
 
 // 최초 화면을 슬라이드 1번 이미지로 세팅
-heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 슬라이드 이미지 1번 보이게 -100vw 로 이동
+heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`;
 
 // 슬라이드 이동 함수
 const moveToSlide = (index) => {
@@ -45,7 +43,7 @@ heroTrack.addEventListener("transitionend", () => {
   // 1번 복제본에 도착할 경우
   if (currentIndex === slides.length - 1) {
     heroTrack.style.transition = "none"; // 애니메이션 끄기
-    currentIndex = 1; // 진짜 1번 위치로 인덱스 변경
+    currentIndex = 0; // 진짜 1번 위치로 인덱스 변경
     heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 눈에 안보이게 진짜 1번 이동
   }
 });
@@ -53,7 +51,7 @@ heroTrack.addEventListener("transitionend", () => {
 // 슬라이드 버튼 클릭했을 때
 dots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
-    moveToSlide(index + 1); // 점은 0부터, 슬라이드는 1번부터 진짜니까 +1 해서 넘김
+    moveToSlide(index); // 점은 0부터, 슬라이드는 1번부터 진짜니까 +1 해서 넘김
     resetInterval(); // 다시 클릭하면 2초 카운트 초기화
   });
 });
