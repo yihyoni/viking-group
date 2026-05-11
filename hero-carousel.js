@@ -4,9 +4,7 @@ let slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
 const dots = document.querySelectorAll(".dot");
 
 // 앞뒤로 가짜 슬라이드(복제본) 만들기
-// 자연스러운 무한 반복을 위해 맨 앞에 '마지막 슬라이드 복사본', 맨 뒤에 '첫 번째 슬라이드 복사본'
-
-const firstClone = slides[0].cloneNode(true); // 첫번째 슬라이드 복사본
+const firstClone = slides[0].cloneNode(true); // 맨 뒤 첫번째 슬라이드 복사본
 
 heroTrack.appendChild(firstClone); // 맨 뒤에 1번 복사본 추가
 
@@ -19,7 +17,7 @@ heroTrack.style.width = `${slides.length * 100}vw`;
 // 변수 설정
 // 현재 구조:  [1] - [2] - [3] - [1 복사본]
 let currentIndex = 0; // 맨 처음 보여줄 슬라이드 인덱스
-let isTransitioning = false; // 이미지가 움직이지 않는상태. 클릭 가능 (광클 방지용 변수)
+let isTransitioning = false; // 이미지가 움직이지 않는 상태. 클릭 가능 (광클 방지용 변수)
 let slideInterval;
 
 // 최초 화면을 슬라이드 1번 이미지로 세팅
@@ -43,8 +41,8 @@ heroTrack.addEventListener("transitionend", () => {
   // 1번 복제본에 도착할 경우
   if (currentIndex === slides.length - 1) {
     heroTrack.style.transition = "none"; // 애니메이션 끄기
-    currentIndex = 0; // 진짜 1번 위치로 인덱스 변경
-    heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 눈에 안보이게 진짜 1번 이동
+    currentIndex = 0; // 진짜 1번 이미지 위치로 인덱스 변경
+    heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 눈에 안보이게 1번 이미지(복제본x) 이동
   }
 });
 
@@ -59,7 +57,7 @@ dots.forEach((dot, index) => {
 // 2초마다 자동 슬라이드
 const startInterval = () => {
   slideInterval = setInterval(() => {
-    moveToSlide(currentIndex + 1);
+    moveToSlide(currentIndex + 1); // 1칸씩 다음으로 이동
   }, 2000);
 };
 
