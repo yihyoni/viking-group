@@ -21,7 +21,7 @@ heroTrack.style.width = `${slides.length * 100}vw`;
 // 변수 설정
 // 현재 구조: [3 복사본] - [1] - [2] - [3] - [1 복사본]
 let currentIndex = 1; // 맨 처음 보여줄 슬라이드는 3번 복사본이 아닌 슬라이드 이미지 1번이므로 인덱스 1부터 시작
-let isTransitioning = false; // 클릭 가능 (광클 방지용 변수)
+let isTransitioning = false; // 이미지가 움직이지 않는상태. 클릭 가능 (광클 방지용 변수)
 let slideInterval;
 
 // 최초 화면을 슬라이드 1번 이미지로 세팅
@@ -50,11 +50,11 @@ heroTrack.addEventListener("transitionend", () => {
   }
 });
 
-// 사용자가 슬라이드 버튼 클릭했을 때
+// 슬라이드 버튼 클릭했을 때
 dots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
     moveToSlide(index + 1); // 점은 0부터, 슬라이드는 1번부터 진짜니까 +1 해서 넘김
-    resetInterval(); // 내가 직접 눌렀으니까 2초 카운트 다시 시작 (안그러면 바로 다음걸로 넘어감)
+    resetInterval(); // 다시 클릭하면 2초 카운트 초기화
   });
 });
 
