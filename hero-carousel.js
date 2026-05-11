@@ -1,12 +1,9 @@
 // Hero 배경 캐러셀 (무한 루프 복제 방식)
-
 const heroTrack = document.querySelector(".hero-carousel-track");
 let slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
 const dots = document.querySelectorAll(".dot");
 
-// ==========================================
-// 1. 앞뒤로 가짜 슬라이드(복제본) 만들기
-// ==========================================
+// 앞뒤로 가짜 슬라이드(복제본) 만들기
 // 자연스러운 무한 반복을 위해 맨 앞에 '마지막 슬라이드 복사본', 맨 뒤에 '첫 번째 슬라이드 복사본'
 
 const firstClone = slides[0].cloneNode(true); // 첫번째 슬라이드 복사본
@@ -21,64 +18,39 @@ slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
 // 늘어난 슬라이드 개수만큼 트랙의 너비도 늘려줌
 heroTrack.style.width = `${slides.length * 100}vw`;
 
-// ==========================================
-// 2. 변수 설정
-// ==========================================
-// [3복사] [1] [2] [3] [1복사]
+// 변수 설정
+// 현재 구조: [3 복사본] - [1] - [2] - [3] - [1 복사본]
 let currentIndex = 1; // 맨 처음 보여줄 슬라이드는 3번 복사본이 아닌 슬라이드 이미지 1번이므로 인덱스 1부터 시작
-let isTransitioning = false; // 슬라이드가 넘어가는 도중에 또 넘어가지 않게 막는 자물쇠 역할
+let isTransitioning = false; // 클릭 가능 (광클 방지용 변수)
 let slideInterval;
 
 // 최초 화면을 슬라이드 1번 이미지로 세팅
 heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 슬라이드 이미지 1번 보이게 -100vw 로 이동
 
-// ==========================================
-// 3. 슬라이드 이동 함수
-// ==========================================
+// 슬라이드 이동 함수
 const moveToSlide = (index) => {
-  if (isTransitioning) return; // 아직 이동 중이면 함수 멈춤 (광클 방지)
-  isTransitioning = true; // 이제 이동 시작! 자물쇠 잠금
-  currentIndex = index; // 도착할 인덱스로 업데이트
+  if (isTransitioning) return; // 아직 이동 중(true)이면 함수 멈춤
+  isTransitioning = true; // 추가 클릭 방지
+  currentIndex = index;
 
-  // 부드럽게 넘어가도록 애니메이션(transition) 켜주고 이동시킴
   heroTrack.style.transition = "transform 0.8s ease";
   heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`;
-
-  // 아래쪽 점(dot) 표시 업데이트하기
-  // 슬라이드 인덱스는 1~3 이지만, 점은 0~2 이므로 -1 을 해줌
-  let dotIndex = currentIndex - 1;
-  if (currentIndex === 0) dotIndex = dots.length - 1; // 3번 복사본 위치면 -> 점은 마지막 점
-  if (currentIndex === slides.length - 1) dotIndex = 0; // 1번 복사본 위치면 -> 점은 첫 번째 점
-
-  dots.forEach((dot) => dot.classList.remove("active"));
-  dots[dotIndex].classList.add("active");
 };
 
-// ==========================================
-// 4. 무한 루프의 핵심! (눈속임 순간이동)
-// ==========================================
-// 슬라이드가 부드럽게 넘어가는 애니메이션이 끝났을 때(transitionend) 실행됨
+// 무한 루프
+// 슬라이드가 부드럽게 넘어가는 애니메이션이 끝났을 때 실행
 heroTrack.addEventListener("transitionend", () => {
-  isTransitioning = false; // 이동 끝! 자물쇠 풀기
+  isTransitioning = false; // 이동이 끝난 후 false 처리
 
-  // 만약 방금 도착한 곳이 '3번 복사본(맨 앞)' 이라면?
-  if (currentIndex === 0) {
-    heroTrack.style.transition = "none"; // 애니메이션 끄기! (안 끄면 되돌아가는게 다 보임)
-    currentIndex = slides.length - 2; // 진짜 3번 위치로 인덱스 변경
-    heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 눈에 안보이게 순식간에 진짜 3번으로 점프!
-  }
-
-  // 만약 방금 도착한 곳이 '1번 복사본(맨 뒤)' 이라면?
+  // 1번 복제본에 도착할 경우
   if (currentIndex === slides.length - 1) {
-    heroTrack.style.transition = "none"; // 애니메이션 끄기!
+    heroTrack.style.transition = "none"; // 애니메이션 끄기
     currentIndex = 1; // 진짜 1번 위치로 인덱스 변경
-    heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 눈에 안보이게 순식간에 진짜 1번으로 점프!
+    heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`; // 눈에 안보이게 진짜 1번 이동
   }
 });
 
-// ==========================================
-// 5. 사용자가 점(dot)을 클릭했을 때
-// ==========================================
+// 사용자가 슬라이드 버튼 클릭했을 때
 dots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
     moveToSlide(index + 1); // 점은 0부터, 슬라이드는 1번부터 진짜니까 +1 해서 넘김
@@ -86,16 +58,14 @@ dots.forEach((dot, index) => {
   });
 });
 
-// ==========================================
-// 6. 2초마다 자동 슬라이드
-// ==========================================
+// 2초마다 자동 슬라이드
 const startInterval = () => {
   slideInterval = setInterval(() => {
-    moveToSlide(currentIndex + 1); // 오른쪽으로 한 칸씩 이동
+    moveToSlide(currentIndex + 1);
   }, 2000);
 };
 
-// 사용자가 클릭했을 때 타이머 껐다 켜는 함수
+// 사용자가 클릭했을 때 슬라이드 이동하고, 타이머 다시 시작
 const resetInterval = () => {
   clearInterval(slideInterval);
   startInterval();
