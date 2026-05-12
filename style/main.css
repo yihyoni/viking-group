@@ -29,11 +29,7 @@ img {
   min-height: 100%;
   background: #ffffff;
   color: #000000;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
 }
 
 .section-hero {
@@ -70,9 +66,9 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: top center;
-  object-position: top center;
+     object-position: top center;
 }
 
 .header-container {
@@ -104,11 +100,7 @@ img {
 }
 
 .category-menu a {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 20px;
   letter-spacing: -0.05em;
@@ -141,11 +133,7 @@ img {
 }
 
 .hero-content {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 500;
   color: #ffffff;
   font-size: clamp(20px, 6.286px + 1.785vw, 32px);
@@ -186,9 +174,7 @@ img {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .menu-container.is-open {
@@ -206,22 +192,14 @@ img {
   border-bottom: 1px solid #dbdbda;
 }
 .menu-header > span:first-of-type {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 20px;
   letter-spacing: -0.05em;
   color: #424348;
 }
 .menu-header > span:nth-of-type(2) {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 24px;
   color: #dbdbda;
@@ -261,11 +239,7 @@ img {
   width: 252px;
 }
 .menu-column > p:first-of-type {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 24px;
   letter-spacing: -0.042em;
@@ -289,11 +263,7 @@ img {
   align-items: center;
   gap: 36px;
   width: 100%;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 24px;
   letter-spacing: -0.042em;
@@ -352,11 +322,7 @@ img {
   align-items: center;
 }
 .menu-container-mobile .menu-title p {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 24px;
   letter-spacing: -1px;
@@ -453,11 +419,7 @@ body.no-scroll {
 }
 
 .box-text {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 32px;
   line-height: 1.35;
@@ -496,16 +458,12 @@ body.no-scroll {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .distribution-txt p:first-of-type,
 .dining-txt p:first-of-type {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 700;
   font-size: 20px;
   letter-spacing: -0.05em;
@@ -514,11 +472,7 @@ body.no-scroll {
 
 .distribution-txt p:last-of-type,
 .dining-txt p:last-of-type {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 20px;
   letter-spacing: -0.05em;
@@ -587,7 +541,7 @@ body.no-scroll {
   height: 100%;
   margin: 0 auto;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .store-img0 img,
@@ -596,7 +550,7 @@ body.no-scroll {
   height: 100%;
   margin: 0 auto;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .store-img0,
@@ -616,11 +570,7 @@ body.no-scroll {
 
 .store-desc {
   max-width: 720px;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1.5;
@@ -646,11 +596,7 @@ body.no-scroll {
 .txt-label {
   width: 100%;
   padding: 10px 0;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 700;
   font-size: 24px;
   letter-spacing: -0.01em;
@@ -669,7 +615,7 @@ body.no-scroll {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .txt-title {
@@ -687,22 +633,14 @@ body.no-scroll {
 }
 .txt-title p:first-of-type {
   margin-bottom: 2px;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 12px;
   color: #7b7b7b;
 }
 .txt-title p:nth-of-type(2),
 .txt-title p:nth-of-type(3) {
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: #000000;
@@ -834,11 +772,7 @@ body.no-scroll {
   display: flex;
   width: 404px;
   justify-content: space-between;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
@@ -882,11 +816,7 @@ body.no-scroll {
   align-items: center;
   gap: 45px;
   margin-bottom: 16px;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #f5f5f0;
@@ -907,11 +837,7 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-family:
-    "Pretendard",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Pretendard", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
@@ -1012,4 +938,4 @@ body {
 .footer {
   flex: 1;
   width: 100%;
-} /*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

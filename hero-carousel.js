@@ -1,6 +1,21 @@
 // Hero 배경 캐러셀 (무한 루프 복제 방식)
 const heroTrack = document.querySelector(".hero-carousel-track");
 let slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
+const dotContainer = document.querySelector(".sliders");
+
+// 원본 슬라이드 개수만큼 dot 생성
+slides.forEach((_, index) => {
+  const dot = document.createElement("span");
+  dot.classList.add("dot");
+
+  if (index === 0) {
+    dot.classList.add("active");
+  }
+
+  dotContainer.appendChild(dot);
+});
+
+// 생성된 dot 다시 가져오기
 const dots = document.querySelectorAll(".dot");
 
 // 앞뒤로 가짜 슬라이드(복제본) 만들기
@@ -14,7 +29,6 @@ slides = Array.from(document.querySelectorAll(".hero-carousel-slide"));
 // 늘어난 슬라이드 개수만큼 트랙의 너비도 늘려줌
 heroTrack.style.width = `${slides.length * 100}vw`;
 
-// 변수 설정
 // 현재 구조:  [1] - [2] - [3] - [1 복사본]
 let currentIndex = 0; // 맨 처음 보여줄 슬라이드 인덱스
 let isTransitioning = false; // 이미지가 움직이지 않는 상태. 클릭 가능 (광클 방지용 변수)
@@ -22,6 +36,18 @@ let slideInterval;
 
 // 최초 화면을 슬라이드 1번 이미지로 세팅
 heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`;
+
+// dot active 업데이트 함수
+const updateDots = () => {
+  let dotIndex = currentIndex;
+
+  if (currentIndex === slides.length - 1) {
+    dotIndex = 0;
+  }
+
+  dots.forEach((dot) => dot.classList.remove("active"));
+  dots[dotIndex].classList.add("active");
+};
 
 // 슬라이드 이동 함수
 const moveToSlide = (index) => {
@@ -31,9 +57,10 @@ const moveToSlide = (index) => {
 
   heroTrack.style.transition = "transform 0.8s ease";
   heroTrack.style.transform = `translateX(${-currentIndex * 100}vw)`;
+
+  updateDots(); // 점 색깔도 바로 업데이트
 };
 
-// 무한 루프
 // 슬라이드가 부드럽게 넘어가는 애니메이션이 끝났을 때 실행
 heroTrack.addEventListener("transitionend", () => {
   isTransitioning = false; // 이동이 끝난 후 false 처리
