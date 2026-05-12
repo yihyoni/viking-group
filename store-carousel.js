@@ -1,23 +1,22 @@
 // Store 이미지 캐러셀
-
-const storeList = document.querySelector(".list_store");
+const storeList = document.querySelector(".list-store");
 const storePrevBtn = document.querySelector(".btn-prev");
 const storeNextBtn = document.querySelector(".btn-next");
 const storeItems = Array.from(storeList.querySelectorAll("div"));
 
-let storeInterval;
-let isStoreMoving = false;
+let storeInterval; // 자동 슬라이드 타이머 저장
+let isStoreMoving = false; // 슬라이드 이동 중복 방지(광클방지)
 
 const storeStyle = document.createElement("style");
 storeStyle.textContent = `
-  .list_store {
+  .list-store {
     position: relative;
     justify-content: center;
     width: 1186px;
     height: 394px;
   }
 
-  .list_store > div {
+  .list-store > div {
     display: block !important;
     position: absolute;
     top: 50%;
@@ -45,25 +44,25 @@ storeStyle.textContent = `
     z-index: 1;
   }
 
-  .list_store > div.is-wrapping {
+  .list-store > div.is-wrapping {
     transition: opacity 0.25s ease;
     opacity: 0;
   }
 
   @media (max-width: 1440px) {
-    .list_store {
+    .list-store {
       width: 394px;
       height: 394px;
     }
   }
 
   @media (max-width: 768px) {
-    .list_store {
+    .list-store {
       width: 240px;
       height: 240px;
     }
 
-    .list_store > div {
+    .list-store > div {
       pointer-events: none;
     }
 
