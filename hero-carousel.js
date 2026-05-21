@@ -77,15 +77,15 @@ heroTrack.addEventListener("transitionend", () => {
 dots.forEach((dot, index) => {
   dot.addEventListener("click", () => {
     moveToSlide(index); // 점은 0부터, 슬라이드는 1번부터 진짜니까 +1 해서 넘김
-    resetInterval(); // 다시 클릭하면 2초 카운트 초기화
+    resetInterval(); // 다시 클릭하면 8초 카운트 초기화
   });
 });
 
-// 2초마다 자동 슬라이드
+// 8초마다 자동 슬라이드
 const startInterval = () => {
   slideInterval = setInterval(() => {
     moveToSlide(currentIndex + 1); // 1칸씩 다음으로 이동
-  }, 2000);
+  }, 8000);
 };
 
 // 사용자가 클릭했을 때 슬라이드 이동하고, 타이머 다시 시작

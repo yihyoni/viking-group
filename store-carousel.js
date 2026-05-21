@@ -97,17 +97,20 @@ document.head.appendChild(storeStyle);
 const storeRoles = ["store-img0", "store-img1", "store-img2"];
 
 // 현재 이미지 박스가 어떤 자리 역할을 갖고 있는지 확인
-const getStoreRole = (item) =>
-  storeRoles.find((role) => item.classList.contains(role));
+function getStoreRole(item) {
+  return storeRoles.find(function (role) {
+    return item.classList.contains(role);
+  });
+}
 
 // 기존 자리 역할을 지우고 새 역할을 부여
-const setStoreRole = (item, role) => {
+function setStoreRole(item, role) {
   item.classList.remove(...storeRoles);
   item.classList.add(role);
-};
+}
 
 // 방향에 따라 다음 자리 역할을 계산
-const rotateStoreRole = (role, direction) => {
+function rotateStoreRole(role, direction) {
   const roleIndex = storeRoles.indexOf(role);
 
   if (direction === "next") {
@@ -115,65 +118,67 @@ const rotateStoreRole = (role, direction) => {
   }
 
   return storeRoles[(roleIndex + 1) % storeRoles.length];
-};
+}
 
 // 실제 캐러셀 이동 처리
-const moveStoreCarousel = (direction) => {
+function moveStoreCarousel(direction) {
   if (isStoreMoving) return;
-  isStoreMoving = true;
+  isStoreMoving = true; // 광클 방지
 
   // 반대편으로 래핑되는 이미지는 잠깐 숨겨서 어색한 왕복 이동을 줄임
   const wrappingRole = direction === "next" ? "store-img0" : "store-img2";
   const wrappingItem = storeItems.find(
-    (item) => getStoreRole(item) === wrappingRole,
+    function (item) {
+      return getStoreRole(item) === wrappingRole;
+    },
   );
 
-  wrappingItem.classList.add("is-wrapping");
+  wrappingItem.classList.add("is-wrapping"); // 반대편 이미지를 반투명으로 숨기기
 
-  window.setTimeout(() => {
-    storeItems.forEach((item) => {
+  setTimeout(function () {
+    storeItems.forEach(function (item) {
       const currentRole = getStoreRole(item);
       const nextRole = rotateStoreRole(currentRole, direction);
       setStoreRole(item, nextRole);
     });
 
-    window.setTimeout(() => {
+    setTimeout(function () {
       wrappingItem.classList.remove("is-wrapping");
     }, 50);
   }, 250);
 
-  window.setTimeout(() => {
+  setTimeout(function () {
     isStoreMoving = false;
   }, 550);
-};
+}
 
-// 다음 / 이전 이동용 래퍼 함수
-const moveStoreNext = () => {
+// 다음 / 이전 버튼을 위한 함수
+function moveStoreNext() {
   moveStoreCarousel("next");
-};
+}
 
-const moveStorePrev = () => {
+function moveStorePrev() {
   moveStoreCarousel("prev");
-};
+}
 
 // 자동 슬라이드 시작
-const startStoreInterval = () => {
+function startStoreInterval() {
   storeInterval = setInterval(moveStoreNext, 3000);
-};
+}
 
 // 버튼 클릭 후 자동 슬라이드 타이머를 다시 시작
-const resetStoreInterval = () => {
+function resetStoreInterval() {
   clearInterval(storeInterval);
   startStoreInterval();
-};
+}
 
 // 좌우 버튼 클릭 이벤트 등록
-storeNextBtn.addEventListener("click", () => {
+storeNextBtn.addEventListener("click", function () {
   moveStoreNext();
   resetStoreInterval();
 });
 
-storePrevBtn.addEventListener("click", () => {
+storePrevBtn.addEventListener("click", function () {
   moveStorePrev();
   resetStoreInterval();
 });
