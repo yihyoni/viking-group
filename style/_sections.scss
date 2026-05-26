@@ -13,8 +13,8 @@
 .box-text {
   font-family: $font-sans;
   font-weight: 600;
-  font-size: 32px;
-  line-height: 1.35;
+  font-size: 24px;
+  line-height: 1.458;
   letter-spacing: -0.01em;
   color: $color-text;
 }
@@ -181,23 +181,23 @@
 .section-event-news {
   background: $color-white;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(272px, 422px));
+  grid-template-columns: repeat(auto-fit, minmax(272px, 360px));
   justify-content: center;
   justify-items: center;
   gap: clamp(24px, 3.2vw, 46px);
-  padding: 60px 0;
+  padding: 66px 0;
 }
 
 .event-news {
-  width: 422px;
+  width: 360px;
 }
 
 .txt-label {
   width: 100%;
-  padding: 10px 0;
+  padding: 8px 0;
   font-family: $font-sans;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: -0.01em;
   text-align: left;
   color: $color-text;
@@ -205,7 +205,7 @@
 
 .box-thumb {
   width: 100%;
-  height: 295px;
+  height: 252px;
   border: 1px solid $color-border;
   border-bottom: 0;
   overflow: hidden;
@@ -218,20 +218,21 @@
 }
 
 .txt-title {
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  min-height: 112px;
+  // gap: 2px;
+  // min-height: 112px;
   width: 100%;
-  padding: 12px 16px;
+  // padding: 12px 16px;
   border: 1px solid $color-border;
   box-sizing: border-box;
   text-align: center;
 
   p:first-of-type {
-    margin-bottom: 2px;
+    // margin-bottom: 2px;
     font-family: $font-sans;
     font-weight: 400;
     font-size: 12px;

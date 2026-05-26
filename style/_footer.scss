@@ -4,7 +4,6 @@
   // max-width: $max-content;
   margin: 0 auto;
   background: $color-bg-dark;
-  color: $color-bg-secondary;
 }
 
 .footer-top {
@@ -22,6 +21,8 @@
   font-family: $font-sans;
   font-weight: 400;
   font-size: 14px;
+  color: $color-text-muted;
+  opacity: 50%;
 
   a {
     white-space: nowrap;
@@ -57,8 +58,8 @@
 }
 
 .footer-bottom {
-  border-top: 1px solid $color-bg-secondary;
-  padding: 32px 56px 40px;
+  // border-top: 1px solid $color-bg-secondary;
+  padding: 18px 56px 40px;
 }
 
 .footer-legal {
@@ -70,7 +71,10 @@
   font-family: $font-sans;
   font-weight: 400;
   font-size: 14px;
-  color: $color-bg-secondary;
+  a {
+    color: $color-text-muted;
+    opacity: 50%;
+  }
 
   span {
     font-size: 12px;
@@ -93,11 +97,12 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-  color: $color-bg-secondary;
+  color: $color-text-muted;
+  opacity: 50%;
   flex: 1;
-  p:last-child {
-    color: $color-text-muted;
-  }
+  // p:last-child {
+  //   color: $color-text-muted;
+  // }
 }
 
 .footer-logo {
