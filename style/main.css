@@ -38,6 +38,7 @@ img {
   height: 802px;
   overflow: hidden;
   background: #090e21;
+  height: 100vh;
 }
 
 .hero-bg {
