@@ -448,11 +448,26 @@ body.no-scroll {
   flex-direction: column;
   gap: 10px;
   width: 290px;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.distribution-content {
+  left: 0;
+  top: 0;
+  transform: translateY(-40px);
 }
 
 .dining-content {
   left: 330px;
   top: 58px;
+  transform: translateY(40px);
+}
+
+.distribution-content.is-visible,
+.dining-content.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .distribution-img,
