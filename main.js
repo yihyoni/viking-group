@@ -1,4 +1,5 @@
 const menuContainer = document.querySelector(".menu-container");
+const categoryMenu = document.querySelectorAll(".category-menu");
 const menuContainerMobile = document.querySelector(".menu-container-mobile");
 const openBtn = document.querySelector(".menu-logo");
 const closeBtnDesktop = document.querySelector(".menu-container .close-button");
@@ -22,6 +23,23 @@ openBtn.addEventListener("click", () => {
     // 데스크톱 메뉴 열기
     menuContainer.classList.toggle("is-open");
   }
+});
+categoryMenu.forEach((categories) => {
+  categories.addEventListener("mouseover", () => {
+    if (window.innerWidth <= 768) {
+      // 모바일 메뉴 열기
+      menuContainerMobile.classList.toggle("is-open");
+
+      // 메뉴 열렸을 때 body 스크롤 막기
+      document.body.classList.toggle(
+        "no-scroll",
+        menuContainerMobile.classList.contains("is-open"),
+      );
+    } else {
+      // 데스크톱 메뉴 열기
+      menuContainer.classList.add("is-open");
+    }
+  });
 });
 
 // 데스크톱 메뉴 닫기
