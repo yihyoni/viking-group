@@ -2,7 +2,7 @@
 const storeList = document.querySelector(".list-store");
 const storePrevBtn = document.querySelector(".btn-prev");
 const storeNextBtn = document.querySelector(".btn-next");
-const storeItems = Array.from(storeList.querySelectorAll("div"));
+const storeItems = Array.from(storeList.querySelectorAll(".store-item"));
 
 let storeInterval; // 자동 슬라이드 타이머 저장
 let isStoreMoving = false; // 슬라이드 이동 중복 방지(광클방지)
@@ -14,20 +14,22 @@ storeStyle.textContent = `
     position: relative;
     justify-content: center;
     width: 1186px;
-    height: 394px;
+    height: 696px;
   }
 
-  .list-store > div {
-    display: block !important;
+  .list-store > .store-item {
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transition:
       transform 0.5s ease,
-      width 0.5s ease,
-      height 0.5s ease,
-      filter 0.5s ease,
-      opacity 0.5s ease;
+      opacity 0.5s ease,
+      filter 0.5s ease;
   }
 
   .store-img0 {
@@ -45,7 +47,7 @@ storeStyle.textContent = `
     z-index: 1;
   }
 
-  .list-store > div.is-wrapping {
+  .list-store > .store-item.is-wrapping {
     transition: opacity 0.25s ease;
     opacity: 0;
   }
@@ -53,31 +55,23 @@ storeStyle.textContent = `
   @media (max-width: 1440px) {
     .list-store {
       width: 394px;
-      height: 394px;
+      height: 520px;
     }
   }
 
   @media (max-width: 768px) {
     .list-store {
       width: 240px;
-      height: 240px;
-    }
-
-    .list-store > div {
-      pointer-events: none;
+      height: 360px;
     }
 
     .store-img0,
     .store-img2 {
-      width: 240px;
-      height: 240px;
       opacity: 0;
       filter: none;
     }
 
     .store-img1 {
-      width: 240px;
-      height: 240px;
       opacity: 1;
       filter: none;
     }
@@ -127,11 +121,9 @@ function moveStoreCarousel(direction) {
 
   // 반대편으로 래핑되는 이미지는 잠깐 숨겨서 어색한 왕복 이동을 줄임
   const wrappingRole = direction === "next" ? "store-img0" : "store-img2";
-  const wrappingItem = storeItems.find(
-    function (item) {
-      return getStoreRole(item) === wrappingRole;
-    },
-  );
+  const wrappingItem = storeItems.find(function (item) {
+    return getStoreRole(item) === wrappingRole;
+  });
 
   wrappingItem.classList.add("is-wrapping"); // 반대편 이미지를 반투명으로 숨기기
 

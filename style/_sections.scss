@@ -89,14 +89,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
-  padding: 48px 24px 56px;
+  // gap: 36px;
+
   background: $color-bg-dark;
 }
 
-.section-store .crab52-logo {
+.store-logo {
+  margin: 50px 0 40px 0;
+  width: 100%;
   height: 36px;
-  width: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.store-img1 .store-logo {
+  opacity: 1;
 }
 
 .store-content {
@@ -130,46 +137,35 @@
 .list-store {
   display: flex;
   align-items: center;
-  // gap: 76px;
   overflow: hidden;
-  justify-content: space-between;
   width: 1186px;
+  height: 696px;
 }
 
-.store-img0,
-.store-img1,
-.store-img2 {
-  // position: relative;
-  overflow: hidden;
+.store-item {
   pointer-events: none;
 }
 
-.store-img1 img {
+.store-img {
+  overflow: hidden;
+}
+
+.store-img img {
   width: 100%;
   height: 100%;
   margin: 0 auto;
   object-fit: cover;
 }
 
-.store-img0 img,
-.store-img2 img {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  object-fit: cover;
-}
-
-.store-img0,
-.store-img2 {
-  // flex: 0 0 auto;
-  filter: blur(2px);
-  opacity: 0.7;
+.store-img0 .store-img,
+.store-img2 .store-img {
   width: 320px;
   height: 320px;
+  filter: blur(2px);
+  opacity: 0.7;
 }
 
-.store-img1 {
-  // flex: 0 0 auto;
+.store-img1 .store-img {
   width: 394px;
   height: 394px;
   filter: none;
@@ -177,7 +173,7 @@
 }
 
 .store-desc {
-  max-width: 720px;
+  margin: 36px 0 50px 0;
   font-family: $font-sans;
   font-weight: 500;
   font-size: 20px;
@@ -185,7 +181,16 @@
   letter-spacing: -0.05em;
   text-align: center;
   color: $color-bg-secondary;
-  opacity: 50%;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.store-img1 .store-desc {
+  opacity: 0.5;
+  transform: translateY(0);
 }
 
 .section-event-news {
@@ -256,6 +261,28 @@
     font-size: 16px;
     color: $color-text;
   }
+}
+
+/* -------------------페이드업 애니메이션 */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.event-news:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.event-news:nth-child(3) {
+  transition-delay: 0.24s;
 }
 
 // 미디어쿼리 ────────────────────────────────────
@@ -334,7 +361,7 @@
     height: 24.83px;
   }
 
-  .section-store .crab52-logo {
+  .store-logo {
     height: 24px;
     width: auto;
   }
@@ -343,6 +370,7 @@
     font-size: 16px;
   }
 }
+
 @media (max-width: 1440px) {
   .store-img0,
   .store-img2 {
@@ -353,7 +381,7 @@
     align-items: center;
     overflow: hidden;
     justify-content: center;
-    width: auto;
+    // width: auto;
   }
 
   .section-event-news {
