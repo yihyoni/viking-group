@@ -10,80 +10,8 @@ let isStoreMoving = false; // 슬라이드 이동 중복 방지(광클방지)
 // 캐러셀 전용 스타일을 JS에서 주입
 const storeStyle = document.createElement("style");
 storeStyle.textContent = `
-  .list-store {
-    position: relative;
-    justify-content: center;
-    width: 1186px;
-    height: 696px;
-  }
 
-  .list-store > .store-item {
-    justify-content: center;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transition:
-      transform 0.5s ease,
-      opacity 0.5s ease,
-      filter 0.5s ease;
-  }
-
-  .store-img0 {
-    transform: translate(calc(-50% - 433px), -50%);
-    z-index: 1;
-  }
-
-  .store-img1 {
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-
-  .store-img2 {
-    transform: translate(calc(-50% + 433px), -50%);
-    z-index: 1;
-  }
-
-  .list-store > .store-item.is-wrapping {
-    transition: opacity 0.25s ease;
-    opacity: 0;
-  }
-
-  @media (max-width: 1440px) {
-    .list-store {
-      width: 394px;
-      height: 520px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .list-store {
-      width: 240px;
-      height: 360px;
-    }
-
-    .store-img0,
-    .store-img2 {
-      opacity: 0;
-      filter: none;
-    }
-
-    .store-img1 {
-      opacity: 1;
-      filter: none;
-    }
-
-    .store-img0 {
-      transform: translate(calc(-50% - 260px), -50%);
-    }
-
-    .store-img2 {
-      transform: translate(calc(-50% + 260px), -50%);
-    }
-  }
+  
 `;
 document.head.appendChild(storeStyle);
 
