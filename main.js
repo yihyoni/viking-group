@@ -40,6 +40,13 @@ categoryMenu.forEach((categories) => {
       menuContainer.classList.add("is-open");
     }
   });
+
+  categories.addEventListener("click", (event) => {
+    if (window.innerWidth > 768) {
+      event.preventDefault();
+      menuContainer.classList.add("is-open");
+    }
+  });
 });
 
 // 데스크톱 메뉴 닫기
@@ -51,6 +58,24 @@ closeBtnDesktop.addEventListener("click", () => {
 closeBtnMobile.addEventListener("click", () => {
   menuContainerMobile.classList.remove("is-open");
   document.body.classList.remove("no-scroll");
+});
+
+// 데스크톱 메뉴가 열려 있을 때 흰색 메뉴 바깥을 클릭하면 닫기
+document.addEventListener("click", (event) => {
+  const isDesktopMenuOpen = menuContainer.classList.contains("is-open");
+  const clickedInsideMenu = menuContainer.contains(event.target);
+  const clickedMenuButton = openBtn.contains(event.target);
+  const clickedCategoryMenu = event.target.closest(".category-menu");
+
+  if (
+    window.innerWidth > 768 &&
+    isDesktopMenuOpen &&
+    !clickedInsideMenu &&
+    !clickedMenuButton &&
+    !clickedCategoryMenu
+  ) {
+    menuContainer.classList.remove("is-open");
+  }
 });
 
 // 모바일 메뉴 내부 토글 (아코디언)

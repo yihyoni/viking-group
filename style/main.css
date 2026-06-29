@@ -652,15 +652,15 @@ body.no-scroll {
 .section-event-news {
   background: #ffffff;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(272px, 360px));
+  grid-template-columns: repeat(3, clamp(360px, 25vw, 460px));
   justify-content: center;
   justify-items: center;
-  gap: clamp(24px, 3.2vw, 46px);
+  gap: clamp(46px, 3.2vw, 60px);
   padding: 66px 0;
 }
 
 .event-news {
-  width: 360px;
+  width: 100%;
 }
 
 .txt-label {
@@ -676,7 +676,8 @@ body.no-scroll {
 
 .box-thumb {
   width: 100%;
-  height: 252px;
+  height: auto;
+  aspect-ratio: 422/295;
   border: 1px solid #e8e8e8;
   border-bottom: 0;
   overflow: hidden;
@@ -777,8 +778,11 @@ body.no-scroll {
     justify-content: center;
     width: 394px;
   }
+}
+@media (max-width: 1024px) {
   .section-event-news {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 @media (max-width: 768px) {
