@@ -31,6 +31,31 @@ function setStoreRole(item, role) {
   item.classList.add(role);
 }
 
+// 가운데 카드가 바뀔 때 해당 설명 애니메이션을 다시 실행
+function updateStoreDescAnimation() {
+  storeItems.forEach(function (item) {
+    item.querySelector(".store-desc").classList.remove("is-desc-visible");
+    item.querySelector(".store-img").classList.remove("is-image-visible");
+    item.querySelector(".store-logo").classList.remove("is-logo-visible");
+  });
+
+  const activeItem = storeItems.find(function (item) {
+    return item.classList.contains("store-img1");
+  });
+
+  if (activeItem) {
+    activeItem
+      .querySelector(".store-desc")
+      .classList.add("is-desc-visible");
+    activeItem
+      .querySelector(".store-img")
+      .classList.add("is-image-visible");
+    activeItem
+      .querySelector(".store-logo")
+      .classList.add("is-logo-visible");
+  }
+}
+
 // 방향에 따라 다음 자리 역할을 계산
 function rotateStoreRole(role, direction) {
   const roleIndex = storeRoles.indexOf(role);
@@ -61,6 +86,7 @@ function moveStoreCarousel(direction) {
       const nextRole = rotateStoreRole(currentRole, direction);
       setStoreRole(item, nextRole);
     });
+    updateStoreDescAnimation();
 
     setTimeout(function () {
       wrappingItem.classList.remove("is-wrapping");
@@ -104,4 +130,5 @@ storePrevBtn.addEventListener("click", function () {
 });
 
 // 페이지 진입 시 자동 슬라이드 시작
+updateStoreDescAnimation();
 startStoreInterval();

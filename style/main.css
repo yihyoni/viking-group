@@ -522,6 +522,22 @@ body.no-scroll {
   opacity: 1;
 }
 
+.store-img1 .store-logo.is-logo-visible {
+  animation: store-logo-reveal 0.9s ease-out both;
+}
+
+@keyframes store-logo-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
 .store-content {
   display: flex;
   align-items: center;
@@ -591,6 +607,20 @@ body.no-scroll {
   opacity: 1;
 }
 
+.store-img1 .store-img.is-image-visible {
+  animation: store-image-reveal 0.8s ease-out both;
+}
+
+@keyframes store-image-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .store-desc {
   margin: 36px 0 50px 0;
   font-family: "Pretendard", system-ui, -apple-system, sans-serif;
@@ -601,13 +631,22 @@ body.no-scroll {
   text-align: center;
   color: #f5f5f0;
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(12px);
 }
 
-.store-img1 .store-desc {
-  opacity: 0.5;
-  transform: translateY(0);
+.store-img1 .store-desc.is-desc-visible {
+  animation: store-desc-fade-up 0.55s ease-out both;
+}
+
+@keyframes store-desc-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
 }
 
 .section-event-news {
