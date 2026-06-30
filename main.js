@@ -2,6 +2,7 @@ const menuContainer = document.querySelector(".menu-container");
 const categoryMenu = document.querySelectorAll(".category-menu");
 const menuContainerMobile = document.querySelector(".menu-container-mobile");
 const openBtn = document.querySelector(".menu-logo");
+const MENU_BREAKPOINT = 1440;
 const closeBtnDesktop = document.querySelector(".menu-container .close-button");
 const closeBtnMobile = document.querySelector(
   ".menu-container-mobile .close-button",
@@ -11,7 +12,7 @@ const closeBtnMobile = document.querySelector(
 // 미디어쿼리 768px 기준
 
 openBtn.addEventListener("click", () => {
-  if (window.innerWidth <= 768) {
+  if (window.innerWidth <= MENU_BREAKPOINT) {
     // 모바일 메뉴 열기
     menuContainerMobile.classList.toggle("is-open");
     // is-open이 true면 메뉴 열림
@@ -26,7 +27,7 @@ openBtn.addEventListener("click", () => {
 });
 categoryMenu.forEach((categories) => {
   categories.addEventListener("mouseover", () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= MENU_BREAKPOINT) {
       // 모바일 메뉴 열기
       menuContainerMobile.classList.toggle("is-open");
 
@@ -42,7 +43,7 @@ categoryMenu.forEach((categories) => {
   });
 
   categories.addEventListener("click", (event) => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > MENU_BREAKPOINT) {
       event.preventDefault();
       menuContainer.classList.add("is-open");
     }
@@ -68,7 +69,7 @@ document.addEventListener("click", (event) => {
   const clickedCategoryMenu = event.target.closest(".category-menu");
 
   if (
-    window.innerWidth > 768 &&
+    window.innerWidth > MENU_BREAKPOINT &&
     isDesktopMenuOpen &&
     !clickedInsideMenu &&
     !clickedMenuButton &&
@@ -112,9 +113,9 @@ toggleBtns.forEach((btn) => {
 });
 
 // 768px 브레이크포인트를 넘나들 때 열린 메뉴 상태 초기화
-const mobileMenuMedia = window.matchMedia("(max-width: 768px)");
-
-const responsiveMenuMedia = window.matchMedia("(max-width: 768px)");
+const responsiveMenuMedia = window.matchMedia(
+  `(max-width: ${MENU_BREAKPOINT}px)`,
+);
 
 responsiveMenuMedia.addEventListener("change", () => {
   menuContainer.classList.remove("is-open");

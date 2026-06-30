@@ -52,7 +52,7 @@
   z-index: 1;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1441px) {
   .header-container {
     z-index: 1000;
   }
@@ -379,14 +379,18 @@
 }
 
 // 추후 영어 번역 기능을 위해 클릭가능하도록 설정
-@media (min-width: 769px) {
+@media (min-width: 1441px) {
   .menu-container-mobile,
   .menu-container-mobile.is-open {
     display: none !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
+  .menu-container {
+    display: none !important;
+  }
+
   .menu-container-mobile {
     display: flex;
     flex-direction: column;
