@@ -51,6 +51,12 @@
   flex-direction: column;
   z-index: 1;
 }
+
+@media (min-width: 769px) {
+  .header-container {
+    z-index: 1000;
+  }
+}
 .header {
   display: flex;
   align-items: center;
@@ -148,11 +154,12 @@
 }
 
 .menu-container {
-  position: absolute;
-  z-index: 2;
+  position: fixed;
+  z-index: 999;
   left: 0;
   right: 0;
   top: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: 563px;
@@ -160,15 +167,19 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: translateY(-16px);
   transition:
     opacity 0.3s ease,
-    visibility 0.3s ease;
+    transform 0.35s ease,
+    visibility 0s linear 0.35s;
 }
 
 .menu-container.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 
 .menu-header {
@@ -368,12 +379,91 @@
 }
 
 // 추후 영어 번역 기능을 위해 클릭가능하도록 설정
+@media (min-width: 769px) {
+  .menu-container-mobile,
+  .menu-container-mobile.is-open {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-container-mobile {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.35s ease,
+      visibility 0s linear 0.35s;
+  }
+
+  .menu-container-mobile.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  .menu-container-mobile .menu-column {
+    gap: 0;
+  }
+
+  .menu-container-mobile .menu-list {
+    display: flex;
+    width: 100%;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      max-height 0.35s ease,
+      margin-top 0.35s ease,
+      opacity 0.25s ease,
+      transform 0.35s ease;
+  }
+
+  .menu-container-mobile .menu-column.is-expanded .menu-list {
+    max-height: 240px;
+    margin-top: 16px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
 .menu-header span:first-of-type {
   cursor: pointer;
 }
 
 body.no-scroll {
   overflow: hidden;
+}
+
+// 데스크톱 메뉴
+.menu-container .menu-list a {
+  transition: color 0.25s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: #63b5d3;
+  }
+}
+
+// 모바일 메뉴
+.menu-container-mobile .menu-list a {
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    color: #63b5d3;
+  }
 }
 
 // 미디어쿼리 ────────────────────────────────────

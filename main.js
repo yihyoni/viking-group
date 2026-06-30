@@ -86,29 +86,48 @@ const toggleBtns = document.querySelectorAll(
 toggleBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const menuColumn = btn.closest(".menu-column");
-    const menuList = menuColumn.querySelector(".menu-list");
     const iconPlus = btn.querySelector(".icon-plus");
     const iconMinus = btn.querySelector(".icon-minus");
 
-    const isOpen = menuList.style.display === "flex";
+    const isOpen = menuColumn.classList.contains("is-expanded");
 
     // 모든 메뉴 닫기
     toggleBtns.forEach((otherBtn) => {
       const otherColumn = otherBtn.closest(".menu-column");
-      const otherList = otherColumn.querySelector(".menu-list");
       const otherPlus = otherBtn.querySelector(".icon-plus");
       const otherMinus = otherBtn.querySelector(".icon-minus");
 
-      otherList.style.display = "none";
+      otherColumn.classList.remove("is-expanded");
       otherPlus.style.display = "block";
       otherMinus.style.display = "none";
     });
 
     // 내가 누른 메뉴가 닫혀있었으면 열기
     if (!isOpen) {
-      menuList.style.display = "flex";
+      menuColumn.classList.add("is-expanded");
       iconPlus.style.display = "none";
       iconMinus.style.display = "block";
     }
+  });
+});
+
+// 768px 브레이크포인트를 넘나들 때 열린 메뉴 상태 초기화
+const mobileMenuMedia = window.matchMedia("(max-width: 768px)");
+
+const responsiveMenuMedia = window.matchMedia("(max-width: 768px)");
+
+responsiveMenuMedia.addEventListener("change", () => {
+  menuContainer.classList.remove("is-open");
+  menuContainerMobile.classList.remove("is-open");
+  document.body.classList.remove("no-scroll");
+
+  toggleBtns.forEach((btn) => {
+    const menuColumn = btn.closest(".menu-column");
+    const iconPlus = btn.querySelector(".icon-plus");
+    const iconMinus = btn.querySelector(".icon-minus");
+
+    menuColumn.classList.remove("is-expanded");
+    iconPlus.style.display = "block";
+    iconMinus.style.display = "none";
   });
 });
